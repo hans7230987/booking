@@ -11,7 +11,7 @@
         <div class="news-box">
             <h3>最新消息</h3>
             <ul>
-                <li>xxx俱樂部正式開放線上預約場地</li>
+                <li>球館通正式開放線上預約場地</li>
             </ul>
         </div>
     </div>

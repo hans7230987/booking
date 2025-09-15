@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>球館預約系統</title>
+    <title>球館通</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <a href="{{ route('home') }}">球館預約系統</a>
+            <a href="{{ route('home') }}">球館通</a>
             <div class="auth-links">
                 @guest
                 <a href="{{ route('home') }}">首頁</a> |
