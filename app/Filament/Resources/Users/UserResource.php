@@ -28,7 +28,7 @@ class UserResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static UnitEnum|string|null $navigationGroup = '會員管理';
-   
+
     protected static ?string $navigationLabel = '使用者';
 
     public static function form(Schema $schema): Schema
@@ -38,11 +38,13 @@ class UserResource extends Resource
                 ->label('姓名')
                 ->required()
                 ->maxLength(255),
+
             TextInput::make('email')
                 ->label('Email')
                 ->email()
                 ->required()
                 ->maxLength(255),
+
             Select::make('role')
                 ->label('角色')
                 ->options([
@@ -50,6 +52,23 @@ class UserResource extends Resource
                     'user' => '一般會員',
                 ])
                 ->default('user'),
+
+            TextInput::make('password')
+                ->label('密碼')
+                ->password()
+                ->required(fn(string $context): bool => $context === 'create') // 只在新增必填
+                ->same('password_confirmation') // 驗證要跟確認密碼一樣
+                ->dehydrateStateUsing(fn($state) => !empty($state) ? bcrypt($state) : null) // 存入前加密
+                ->dehydrated(fn($state) => filled($state)) // 避免空字串覆蓋舊密碼
+                ->validationMessages([
+                    'same' => '兩次輸入的密碼不一致，請重新確認。',
+                ]),
+
+            TextInput::make('password_confirmation')
+                ->label('確認密碼')
+                ->password()
+                ->required(fn(string $context): bool => $context === 'create') // 新增時必填
+                ->dehydrated(false), // 不存到資料庫
         ]);
     }
 
@@ -64,9 +83,9 @@ class UserResource extends Resource
             ])
             ->recordActions([
                 Action::make('edit')
-                    ->url(fn (User $record): string => route('filament.admin.resources.users.edit', $record)),
+                    ->url(fn(User $record): string => route('filament.admin.resources.users.edit', $record)),
                 Action::make('delete')
-                    ->action(fn (User $record) => $record->delete()),
+                    ->action(fn(User $record) => $record->delete()),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
