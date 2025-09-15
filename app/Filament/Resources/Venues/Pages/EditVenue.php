@@ -16,4 +16,10 @@ class EditVenue extends EditRecord
             DeleteAction::make(),
         ];
     }
+
+    protected function getRedirectUrl(): string
+    {
+        // 編輯成功後，回到列表頁
+        return $this->getResource()::getUrl('index');
+    }
 }
