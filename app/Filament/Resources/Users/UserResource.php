@@ -51,7 +51,8 @@ class UserResource extends Resource
                     'admin' => '管理員',
                     'user' => '一般會員',
                 ])
-                ->default('user'),
+                ->default('user')
+                ->disablePlaceholderSelection(),
 
             TextInput::make('password')
                 ->label('密碼')

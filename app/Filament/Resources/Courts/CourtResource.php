@@ -40,15 +40,19 @@ class CourtResource extends Resource
             Select::make('venue_id')
                 ->label('場館')
                 ->relationship('venue', 'name')
-                ->required(),
+                ->required()
+                ->disablePlaceholderSelection(),
+
             TextInput::make('name')
                 ->label('球場名稱')
                 ->required()
                 ->maxLength(255),
+
             TextInput::make('type')
                 ->label('球場類型')
                 ->placeholder('例如：羽球、籃球')
                 ->maxLength(100),
+                
             Select::make('status')
                 ->label('狀態')
                 ->options([
@@ -57,7 +61,8 @@ class CourtResource extends Resource
                     'reserved' => '已預約',
                 ])
                 ->default('available')
-                ->required(),
+                ->required()
+                ->disablePlaceholderSelection(),
         ]);
     }
 

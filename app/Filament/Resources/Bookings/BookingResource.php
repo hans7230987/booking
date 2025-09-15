@@ -38,11 +38,13 @@ class BookingResource extends Resource
             Select::make('user_id')
                 ->label('使用者')
                 ->relationship('user', 'name')
-                ->required(),
+                ->required()
+                ->disablePlaceholderSelection(),
             Select::make('court_id')
                 ->label('球場')
                 ->relationship('court', 'name')
-                ->required(),
+                ->required()
+                ->disablePlaceholderSelection(),
             DateTimePicker::make('start_time')
                 ->label('開始時間')
                 ->required(),
@@ -56,7 +58,8 @@ class BookingResource extends Resource
                     'confirmed' => '已確認',
                     'canceled' => '已取消',
                 ])
-                ->default('pending'),
+                ->default('pending')
+                ->disablePlaceholderSelection(),
         ]);
     }
 
