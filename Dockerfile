@@ -1,5 +1,5 @@
-# 使用 PHP 8.2 FPM 官方映像
-FROM php:8.3-fpm
+# 使用 PHP 8.4 FPM 官方映像
+FROM php:8.4-fpm
 
 # 設定工作目錄
 WORKDIR /var/www
@@ -20,12 +20,11 @@ RUN apt-get update && apt-get install -y \
 # 安裝 Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# 複製 Composer 檔案並安裝依賴
-COPY composer.json composer.lock ./
-RUN composer install --optimize-autoloader --no-interaction
-
-# 複製專案其他檔案
+# 複製專案所有檔案
 COPY . .
+
+# 安裝 Composer 依賴
+RUN composer install --optimize-autoloader --no-interaction
 
 # 暴露容器埠號
 EXPOSE 9000
