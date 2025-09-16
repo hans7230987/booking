@@ -1,5 +1,5 @@
 # 使用 PHP 8.2 FPM 官方映像
-FROM php:8.2-fpm
+FROM php:8.3-fpm
 
 # 設定工作目錄
 WORKDIR /var/www
