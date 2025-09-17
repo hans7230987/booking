@@ -42,10 +42,10 @@
 
                 <div class="mb-3">
                     <label class="form-label">生日</label>
-                    <input type="date" 
-                           class="form-control @error('birthday') is-invalid @enderror"
-                           name="birthday"
-                           value="{{ old('birthday', $user->birthday) }}">
+                    <input type="text" 
+                            class="form-control datetimepicker @error('birthday') is-invalid @enderror"
+                            name="birthday"
+                            value="{{ old('birthday', $user->birthday) }}">
                     @error('birthday')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -68,3 +68,12 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    flatpickr(".datetimepicker", {
+        dateFormat: "Y-m-d",
+        maxDate: "today",      // 限制生日不可超過今天
+    });
+</script>
+@endpush
