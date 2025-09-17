@@ -37,7 +37,7 @@
                 <img src="{{ asset('images/icons/order.png') }}" alt="我的訂單">
                 <span>我的訂單</span>
             </div></a>
-            <a href="#"><div class="feature blue">
+            <a href="{{ route('profile.show') }}"><div class="feature blue">
                 <img src="{{ asset('images/icons/member.png') }}" alt="我的資料">
                 <span>我的資料</span>
             </div></a>

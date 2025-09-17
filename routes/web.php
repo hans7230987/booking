@@ -4,6 +4,7 @@ use App\Http\Controllers\VenueController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,6 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/sports/{slug}/venues/{venue}', [VenueController::class, 'showByType'])->name('sports.show');
     Route::get('/my-bookings', [BookingController::class, 'myBookings'])->name('my.bookings');
     Route::delete('/bookings/{booking}', [BookingController::class, 'cancel'])->name('bookings.cancel');
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
