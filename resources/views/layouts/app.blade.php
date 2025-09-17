@@ -21,7 +21,7 @@
                 @else
                 <span>{{ Auth::user()->name }} 您好</span> |
                 <a href="{{ route('home') }}">首頁</a> |
-                <a href="#">修改會員資訊</a> |
+                <a href="{{ route('profile.edit') }}">修改會員資訊</a> |
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     登出
                 </a>
