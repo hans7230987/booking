@@ -43,19 +43,27 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'email'    => 'required|email',
             'password' => 'required',
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('home')->with('success', '登入成功！');
+
+            // 依角色導向
+            $user = Auth::user();
+            if ($user->role === 'admin') {
+                return redirect('/admin')->with('success', '管理員登入成功！');
+            }
+
+            return redirect()->route('venues.index')->with('success', '登入成功！');
         }
 
         throw ValidationException::withMessages([
             'email' => [trans('auth.failed')],
         ]);
     }
+
 
     public function logout(Request $request)
     {
