@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container my-5">
+<div class="container2 my-5">
     <div class="mb-4 text-center">
         <h2 class="fw-bold">{{ $venue->name }} 的 {{ $type }} 場地</h2>
         <p class="text-muted">{{ $venue->address }}</p>

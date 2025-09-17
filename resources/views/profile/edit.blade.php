@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container my-5">
+<div class="container2 my-5">
     <div class="card shadow-sm rounded-4">
         <div class="card-header bg-primary text-white">
             <h3 class="mb-0">編輯我的資料</h3>

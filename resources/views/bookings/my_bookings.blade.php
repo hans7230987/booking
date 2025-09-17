@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5">
-    <h1 class="mb-4">我的訂單</h1>
+<div class="container2 py-5">
+    <h1 class="mb-2 fw-bold text-center">🧾 我的訂單</h1>
 
     @if($bookings->isEmpty())
     <p>你還沒有預約任何場地。</p>
