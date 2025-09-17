@@ -2,15 +2,16 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #fefeff;
+    /* background: linear-gradient(120deg, #ffeba9, #fffedf); */
 }
 
 .container {
     width: 80%;
     margin: 20px auto;
-    background-color: #fff;
+    background-color: #cce6fe;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -20,6 +21,7 @@ body {
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #ccc;
+    flex-wrap: wrap;
 }
 
 .header a {
@@ -29,7 +31,7 @@ body {
 }
 
 .auth-links a {
-    margin-left: 15px;
+    margin-left: 10px;
 }
 
 .alert {
@@ -76,7 +78,21 @@ header {
 }
 
 header .logo img {
-    height: 50px;
+    height: 15px;
+}
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;          /* 圖片與文字之間的距離 */
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.site-logo img {
+  height: 30px;      /* 或 max-height:40px; */
+  width: auto;
+  display: block;
 }
 
 header nav ul {
@@ -126,6 +142,7 @@ section h2 {
 
 .dashboard {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     margin-top: 20px;
 }
@@ -133,6 +150,14 @@ section h2 {
 /* 左側 sidebar */
 .sidebar {
     width: 250px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        order: 2;
+        /* 放到下面 */
+    }
 }
 
 .sidebar .logo img {
@@ -148,8 +173,9 @@ section h2 {
 }
 
 .news-box {
+    border-radius: 10px;
     margin-top: 20px;
-    background: #f0f0f0;
+    background: #fefeff;
     padding: 10px;
 }
 
@@ -179,6 +205,7 @@ section h2 {
     display: flex;
     gap: 20px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .feature {
@@ -193,6 +220,21 @@ section h2 {
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    flex: 1 1 calc(33% - 20px);
+    /* 桌機三等分 */
+    max-width: 120px;
+    aspect-ratio: 1 / 1;
+}
+@media (max-width: 768px) {
+  .feature {
+    flex: 1 1 45%;   /* 手機兩等分 */
+    max-width: none;
+  }
+}
+@media (max-width: 480px) {
+  .feature {
+    flex: 1 1 90%;   /* 超小螢幕單列 */
+  }
 }
 
 .feature img {
@@ -202,11 +244,11 @@ section h2 {
 }
 
 .feature.yellow {
-    background: #F8CC73;
+    background: #fff2aa;
 }
 
 .feature.blue {
-    background: #50a5b1;
+    background: #98ccff;
 }
 
 .feature.navy {
@@ -218,7 +260,7 @@ section h2 {
 }
 
 .feature.green {
-    background: #b8c39d;
+    background: #73d39b;
 }
 
 .feature:hover {
@@ -239,4 +281,46 @@ footer {
     color: red;
     font-size: 0.875rem;
     margin-top: 0.25rem;
+}
+
+/* 卡片 hover 動畫 */
+.venue-card {
+    transition: all 0.25s ease;
+    border: none;
+}
+.venue-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* 圖片固定高度 */
+.card-img-top,
+.skeleton-img {
+    height: 160px;
+    object-fit: cover;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+/* Skeleton 樣式 */
+.skeleton-img,
+.skeleton-line {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f8f8f8 37%, #e0e0e0 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease infinite;
+    border-radius: .25rem;
+}
+
+.skeleton-line {
+    height: 14px;
+    margin-bottom: .5rem;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -400px 0;
+    }
+    100% {
+        background-position: 400px 0;
+    }
 }

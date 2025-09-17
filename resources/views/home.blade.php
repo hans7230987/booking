@@ -5,9 +5,9 @@
 
     <!-- 左側 LOGO + 最新消息 -->
     <div class="sidebar">
-        <div class="logo">
+        <!-- <div class="logo">
             <img src="{{ asset('images/logo.png') }}" alt="Wave Sunshine Logo">
-        </div>
+        </div> -->
         <div class="news-box">
             <h3>最新消息</h3>
             <ul>
