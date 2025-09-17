@@ -12,7 +12,10 @@
 <body>
     <div class="container">
         <div class="header">
-            <a href="{{ route('home') }}">球館通</a>
+            <a href="{{ route('home') }}" class="site-logo">
+                <img src="{{ asset('images/logo.png') }}" alt="Wave Sunshine Logo">
+                <span>球館通</span>
+            </a>
             <div class="auth-links">
                 @guest
                 <a href="{{ route('home') }}">首頁</a> |
@@ -42,7 +45,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    
+
     @stack('scripts')
 </body>
 
