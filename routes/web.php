@@ -7,9 +7,14 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function () {
-    return view('home'); // 首頁
-})->name('home');
+    return view('test'); // 首頁
+});
+
+// Route::get('/', function () {
+//     return view('home'); // 首頁
+// })->name('home');
 
 // 認證路由
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
