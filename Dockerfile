@@ -30,4 +30,4 @@ RUN composer install --optimize-autoloader --no-interaction
 EXPOSE $PORT
 
 # 啟動 PHP-FPM
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=$PORT"]
+CMD php artisan serve --host=0.0.0.0 --port=$PORT
