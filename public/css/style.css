@@ -282,3 +282,45 @@ footer {
     font-size: 0.875rem;
     margin-top: 0.25rem;
 }
+
+/* 卡片 hover 動畫 */
+.venue-card {
+    transition: all 0.25s ease;
+    border: none;
+}
+.venue-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* 圖片固定高度 */
+.card-img-top,
+.skeleton-img {
+    height: 160px;
+    object-fit: cover;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+/* Skeleton 樣式 */
+.skeleton-img,
+.skeleton-line {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f8f8f8 37%, #e0e0e0 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease infinite;
+    border-radius: .25rem;
+}
+
+.skeleton-line {
+    height: 14px;
+    margin-bottom: .5rem;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -400px 0;
+    }
+    100% {
+        background-position: 400px 0;
+    }
+}
