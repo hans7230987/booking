@@ -19,9 +19,9 @@ class BookingController extends Controller
         // 檢查同一球場是否已有衝突預約
         $exists = Booking::where('court_id', $request->court_id)
             ->where(function ($q) use ($request) {
-                $q->whereBetween('start_time', [$request->start_time, $request->end_time])
-                    ->orWhereBetween('end_time', [$request->start_time, $request->end_time])
-                    ->orWhere(function ($q2) use ($request) {
+                $q->whereBetween('start_time', [$request->start_time, $request->end_time]) // 已有預約的開始時間落在新預約區間內
+                    ->orWhereBetween('end_time', [$request->start_time, $request->end_time]) // 已有預約的結束時間落在新預約區間內
+                    ->orWhere(function ($q2) use ($request) { //已有預約完全覆蓋新預約
                         $q2->where('start_time', '<', $request->start_time)
                             ->where('end_time', '>', $request->end_time);
                     });
