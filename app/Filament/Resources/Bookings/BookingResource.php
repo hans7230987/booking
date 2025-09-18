@@ -47,9 +47,13 @@ class BookingResource extends Resource
                 ->disablePlaceholderSelection(),
             DateTimePicker::make('start_time')
                 ->label('開始時間')
+                ->minutesStep(30) // 每格 30 分鐘
+                ->displayFormat('Y-m-d H:i')
                 ->required(),
             DateTimePicker::make('end_time')
                 ->label('結束時間')
+                ->minutesStep(30) // 每格 30 分鐘
+                ->displayFormat('Y-m-d H:i')
                 ->required(),
             Select::make('status')
                 ->label('狀態')
