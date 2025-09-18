@@ -55,18 +55,11 @@
                 <img src="{{ asset('images/icons/course_register.png') }}" alt="課程報名">
                 <span>課程報名</span>
             </div></a>
-            <a href="#"><div class="feature yellow">
-                <img src="{{ asset('images/icons/season_rent.png') }}" alt="場地季租">
-                <span>場地季租</span>
+            <a href="{{ route('venues.index') }}"><div class="feature pink">
+                <img src="{{ asset('images/icons/season_rent.png') }}" alt="場館列表">
+                <span>場館列表</span>
             </div></a>
         </div>
-        
-        <!-- <div class="feature-row">
-            <a href="{{ route('venues.index') }}"><div class="feature green">
-                <img src="{{ asset('images/icons/squash.png') }}" alt="壁球">
-                <span>壁球</span>
-            </div></a>
-        </div> -->
     </div>
 </div>
 
