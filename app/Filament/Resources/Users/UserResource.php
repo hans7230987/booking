@@ -5,8 +5,6 @@ namespace App\Filament\Resources\Users;
 use App\Filament\Resources\Users\Pages\CreateUser;
 use App\Filament\Resources\Users\Pages\EditUser;
 use App\Filament\Resources\Users\Pages\ListUsers;
-use App\Filament\Resources\Users\Schemas\UserForm;
-use App\Filament\Resources\Users\Tables\UsersTable;
 use App\Models\User;
 use BackedEnum;
 use UnitEnum;
@@ -30,6 +28,22 @@ class UserResource extends Resource
     protected static UnitEnum|string|null $navigationGroup = '會員管理';
 
     protected static ?string $navigationLabel = '使用者';
+
+    /**
+     * 控制側邊選單是否顯示
+     */
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false; // 只有 admin 可以看到
+    }
+
+    /**
+     * 控制資源列表是否可訪問
+     */
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
 
     public static function form(Schema $schema): Schema
     {
@@ -57,10 +71,10 @@ class UserResource extends Resource
             TextInput::make('password')
                 ->label('密碼')
                 ->password()
-                ->required(fn(string $context): bool => $context === 'create') // 只在新增必填
-                ->same('password_confirmation') // 驗證要跟確認密碼一樣
-                ->dehydrateStateUsing(fn($state) => !empty($state) ? bcrypt($state) : null) // 存入前加密
-                ->dehydrated(fn($state) => filled($state)) // 避免空字串覆蓋舊密碼
+                ->required(fn(string $context): bool => $context === 'create')
+                ->same('password_confirmation')
+                ->dehydrateStateUsing(fn($state) => !empty($state) ? bcrypt($state) : null)
+                ->dehydrated(fn($state) => filled($state))
                 ->validationMessages([
                     'same' => '兩次輸入的密碼不一致，請重新確認。',
                 ]),
@@ -68,8 +82,8 @@ class UserResource extends Resource
             TextInput::make('password_confirmation')
                 ->label('確認密碼')
                 ->password()
-                ->required(fn(string $context): bool => $context === 'create') // 新增時必填
-                ->dehydrated(false), // 不存到資料庫
+                ->required(fn(string $context): bool => $context === 'create')
+                ->dehydrated(false),
         ]);
     }
 
@@ -97,9 +111,7 @@ class UserResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

@@ -16,7 +16,6 @@ use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 
-
 class VenueResource extends Resource
 {
     protected static ?string $model = Venue::class;
@@ -26,6 +25,22 @@ class VenueResource extends Resource
     protected static UnitEnum|string|null $navigationGroup = '場館管理';
 
     protected static ?string $navigationLabel = '場館';
+
+    /**
+     * 控制側邊選單是否顯示
+     */
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false; // 只有 admin 可以看到
+    }
+
+    /**
+     * 控制資源列表是否可訪問
+     */
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->isAdmin() ?? false;
+    }
 
     public static function form(Schema $schema): Schema
     {

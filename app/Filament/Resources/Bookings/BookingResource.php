@@ -5,10 +5,7 @@ namespace App\Filament\Resources\Bookings;
 use App\Filament\Resources\Bookings\Pages\CreateBooking;
 use App\Filament\Resources\Bookings\Pages\EditBooking;
 use App\Filament\Resources\Bookings\Pages\ListBookings;
-use App\Filament\Resources\Bookings\Schemas\BookingForm;
-use App\Filament\Resources\Bookings\Tables\BookingsTable;
 use App\Models\Booking;
-use App\Models\Court;
 use BackedEnum;
 use UnitEnum;
 use Filament\Resources\Resource;
@@ -48,12 +45,12 @@ class BookingResource extends Resource
             DateTimePicker::make('start_time')
                 ->label('開始時間')
                 ->minutesStep(30) // 每格 30 分鐘
-                ->displayFormat('Y-m-d H:i')
+                ->displayFormat('m-d H:i')
                 ->required(),
             DateTimePicker::make('end_time')
                 ->label('結束時間')
                 ->minutesStep(30) // 每格 30 分鐘
-                ->displayFormat('Y-m-d H:i')
+                ->displayFormat('m-d H:i')
                 ->required(),
             Select::make('status')
                 ->label('狀態')
@@ -71,30 +68,41 @@ class BookingResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->label('ID')->sortable(),
+                // TextColumn::make('id')->label('ID')->sortable(),
                 TextColumn::make('user.name')->label('使用者')->sortable(),
                 TextColumn::make('court.name')->label('球場'),
-                TextColumn::make('start_time')->label('開始時間')->dateTime(),
-                TextColumn::make('end_time')->label('結束時間')->dateTime(),
-                TextColumn::make('status')->label('狀態'),
+                TextColumn::make('start_time')
+                    ->label('開始時間')
+                    ->dateTime('m-d H:i'), // 只顯示到分鐘
+                TextColumn::make('end_time')
+                    ->label('結束時間')
+                    ->dateTime('m-d H:i'), // 只顯示到分鐘
+                TextColumn::make('status')
+                    ->label('狀態')
+                    ->formatStateUsing(function ($state) {
+                        return match ($state) {
+                            'pending' => '待確認',
+                            'confirmed' => '已確認',
+                            'canceled' => '已取消',
+                            default => $state,
+                        };
+                    }),
             ])
             ->recordActions([
                 Action::make('confirm')
                     ->label('確認')
-                    // ->icon('heroicon-o-check') // 可選，顯示勾勾圖示
-                    ->visible(fn(Booking $record) => $record->status === 'pending') // 只有待確認才顯示
+                    ->visible(fn(Booking $record) => $record->status === 'pending')
                     ->action(function (Booking $record) {
                         $record->status = 'confirmed';
                         $record->save();
                     })
-                    ->requiresConfirmation() // 彈出確認提示
-                    ->color('success'), // 綠色按鈕
+                    ->requiresConfirmation()
+                    ->color('success'),
                 Action::make('編輯')
                     ->url(fn(Booking $record): string => route('filament.admin.resources.bookings.edit', $record)),
                 Action::make('刪除')
                     ->action(fn(Booking $record) => $record->delete()),
             ])
-
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
