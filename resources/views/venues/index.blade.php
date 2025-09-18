@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container2 my-4">
-    <h2 class="mb-4 fw-bold">所有球館</h2>
+    <h2 class="mb-4 fw-bold text-center">所有球館</h2>
 
     @if($venues->isEmpty())
         <p class="text-muted">目前沒有可預約的球館。</p>

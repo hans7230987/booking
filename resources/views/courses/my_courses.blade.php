@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container2 my-5">
-    <h1 class="mb-4 fw-bold text-center">我的課程</h1>
+    <h2 class="mb-4 fw-bold text-center">我的課程</h2>
 
     @if(empty($registeredCourses))
         <div class="alert alert-info text-center shadow-sm">

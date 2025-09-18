@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container2 my-4">
-    <h2 class="mb-4 fw-bold">有提供{{ $type }}場的場館:</h2>
+    <h2 class="mb-4 fw-bold text-center">有提供{{ $type }}場的場館</h2>
 
     @if($venues->isEmpty())
         <p class="text-muted">目前沒有空閒的{{ $type }}場館。</p>

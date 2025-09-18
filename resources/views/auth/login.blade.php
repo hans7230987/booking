@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>登入</h2>
-    <form method="POST" action="{{ route('login') }}">
+    {{-- <h2 class="mb-4 fw-bold text-center">登入</h2> --}}
+    <form method="POST" action="{{ route('login') }}"><br>
         @csrf
         <div class="form-group">
             <label for="email">電子郵件</label>

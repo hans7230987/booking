@@ -4,7 +4,7 @@
 <div class="container2 my-5">
     <div class="card shadow-sm rounded-4">
         <div class="card-header bg-primary text-white">
-            <h3 class="mb-0">編輯我的資料</h3>
+            <h2 class="mb-4 fw-bold text-center">編輯我的資料</h2>
         </div>
 
         <div class="card-body">
@@ -20,7 +20,7 @@
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">名字</label>
-                    <input type="text" 
+                    <input type="text"
                            class="form-control @error('name') is-invalid @enderror"
                            name="name"
                            value="{{ old('name', $user->name) }}">
@@ -31,7 +31,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">電話</label>
-                    <input type="text" 
+                    <input type="text"
                            class="form-control @error('phone') is-invalid @enderror"
                            name="phone"
                            value="{{ old('phone', $user->phone) }}">
@@ -42,7 +42,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">生日</label>
-                    <input type="text" 
+                    <input type="text"
                             class="form-control datetimepicker @error('birthday') is-invalid @enderror"
                             name="birthday"
                             value="{{ old('birthday', $user->birthday) }}">
@@ -53,7 +53,7 @@
 
                 <div class="mb-4">
                     <label class="form-label">地址</label>
-                    <input type="text" 
+                    <input type="text"
                            class="form-control @error('address') is-invalid @enderror"
                            name="address"
                            value="{{ old('address', $user->address) }}">

@@ -4,7 +4,7 @@
 <div class="container2 my-5">
     <div class="card shadow-sm rounded-4">
         <div class="card-header bg-primary text-white">
-            <h3 class="mb-0">我的資料</h3>
+            <h2 class="mb-4 fw-bold text-center">我的資料</h2>
         </div>
 
         <div class="card-body">

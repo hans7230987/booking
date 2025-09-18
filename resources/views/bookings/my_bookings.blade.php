@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container2 py-5">
-    <h1 class="mb-2 fw-bold text-center">我的預約</h1>
+    <h2 class="mb-4 fw-bold text-center">我的預約</h2>
 
     @if($bookings->isEmpty())
     <p>目前還沒有預約任何場地。</p>

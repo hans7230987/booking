@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>註冊</h2>
+    <h2 class="mb-4 fw-bold text-center"><br>註冊</h2>
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <div class="form-group">

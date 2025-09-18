@@ -3,7 +3,7 @@
 @section('content')
 <div class="container2 my-5">
     <div class="text-center p-5 bg-light rounded shadow-sm">
-        <h1 class="fw-bold text-success mb-4">報名成功！</h1>
+        <h2 class="fw-bold text-success mb-4">報名成功！</h2>
 
         <p class="fs-5">
             恭喜你已成功報名：
