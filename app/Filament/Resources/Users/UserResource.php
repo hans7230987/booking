@@ -91,7 +91,7 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->label('ID')->sortable(),
+                // TextColumn::make('id')->label('ID')->sortable(),
                 TextColumn::make('name')->label('姓名')->sortable()->searchable(),
                 TextColumn::make('email')->label('Email')->sortable()->searchable(),
                 TextColumn::make('role')->label('角色'),

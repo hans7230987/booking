@@ -3,8 +3,8 @@
 @section('content')
 <div class="container2 my-5">
     <div class="card shadow-sm rounded-4">
-        <div class="card-header bg-primary text-white">
-            <h2 class="mb-4 fw-bold text-center">編輯我的資料</h2>
+        <div class="card-header">
+            <h2 class="mb-0 fw-bold text-center">編輯我的資料</h2>
         </div>
 
         <div class="card-body">

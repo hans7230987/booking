@@ -52,7 +52,7 @@ class CourtResource extends Resource
                 ->label('球場類型')
                 ->placeholder('例如：羽球、籃球')
                 ->maxLength(100),
-                
+
             Select::make('status')
                 ->label('狀態')
                 ->options([
@@ -70,7 +70,7 @@ class CourtResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->label('ID')->sortable(),
+                // TextColumn::make('id')->label('ID')->sortable(),
                 TextColumn::make('venue.name')->label('場館')->sortable()->searchable(),
                 TextColumn::make('name')->label('名稱')->sortable()->searchable(),
                 TextColumn::make('type')->label('類型')->searchable(),

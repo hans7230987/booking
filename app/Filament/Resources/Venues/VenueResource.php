@@ -66,7 +66,7 @@ class VenueResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->label('ID')->sortable(),
+                // TextColumn::make('id')->label('ID')->sortable(),
                 TextColumn::make('name')->label('名稱')->sortable()->searchable(),
                 TextColumn::make('address')->label('地址'),
                 TextColumn::make('phone')->label('電話'),
