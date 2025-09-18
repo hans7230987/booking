@@ -32,7 +32,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('venues.index')->with('success', '註冊成功！');
+        return redirect()->route('home')->with('success', '註冊成功！');
     }
 
     public function showLoginForm()
