@@ -34,8 +34,8 @@
         </div>
         <div class="feature-row">
             <a href="{{ route('my.bookings') }}"><div class="feature blue">
-                <img src="{{ asset('images/icons/order.png') }}" alt="我的訂單">
-                <span>我的訂單</span>
+                <img src="{{ asset('images/icons/order.png') }}" alt="我的預約">
+                <span>我的預約</span>
             </div></a>
             <a href="{{ route('profile.show') }}"><div class="feature blue">
                 <img src="{{ asset('images/icons/member.png') }}" alt="我的資料">
@@ -47,9 +47,9 @@
             </div></a> -->
         </div>
         <div class="feature-row">
-            <a href="#"><div class="feature yellow">
-                <img src="{{ asset('images/icons/course_search.png') }}" alt="課程查詢">
-                <span>課程查詢</span>
+            <a href="{{ route('my.courses') }}"><div class="feature yellow">
+                <img src="{{ asset('images/icons/course_search.png') }}" alt="我的課程">
+                <span>我的課程</span>
             </div></a>
             <a href="{{ route('courses.index') }}"><div class="feature yellow">
                 <img src="{{ asset('images/icons/course_register.png') }}" alt="課程報名">

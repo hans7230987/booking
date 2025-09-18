@@ -340,3 +340,12 @@ footer {
         background-position: 400px 0;
     }
 }
+
+.course-card {
+    background: linear-gradient(135deg, #6ec1e4, #2f558f);
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+}
+.course-card:hover {
+    transform: translateY(-5px);
+}

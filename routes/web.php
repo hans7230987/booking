@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/courses/{id}/register', [CourseController::class, 'register'])->name('courses.register');
+    Route::get('/courses/{id}/success', [CourseController::class, 'success'])->name('courses.success');
+    Route::get('/my-courses', [CourseController::class, 'myCourses'])->name('my.courses');
 });
 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
