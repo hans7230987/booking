@@ -50,20 +50,22 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // 依角色導向
+            // 依角色導向並顯示不同訊息
             $user = Auth::user();
-            if ($user->role === 'admin') {
-                return redirect('/admin')->with('success', '管理員登入成功！');
+            switch ($user->role) {
+                case 'admin':
+                    return redirect('/admin')->with('success', '管理員登入成功！');
+                case 'venue_manager':
+                    return redirect('/admin')->with('success', '場地管理員登入成功！');
+                default:
+                    return redirect()->route('venues.index')->with('success', '登入成功！');
             }
-
-            return redirect()->route('venues.index')->with('success', '登入成功！');
         }
 
         throw ValidationException::withMessages([
             'email' => [trans('auth.failed')],
         ]);
     }
-
 
     public function logout(Request $request)
     {

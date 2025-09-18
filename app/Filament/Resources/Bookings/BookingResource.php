@@ -81,7 +81,7 @@ class BookingResource extends Resource
             ->recordActions([
                 Action::make('confirm')
                     ->label('確認')
-                    ->icon('heroicon-o-check') // 可選，顯示勾勾圖示
+                    // ->icon('heroicon-o-check') // 可選，顯示勾勾圖示
                     ->visible(fn(Booking $record) => $record->status === 'pending') // 只有待確認才顯示
                     ->action(function (Booking $record) {
                         $record->status = 'confirmed';
@@ -89,9 +89,9 @@ class BookingResource extends Resource
                     })
                     ->requiresConfirmation() // 彈出確認提示
                     ->color('success'), // 綠色按鈕
-                Action::make('edit')
+                Action::make('編輯')
                     ->url(fn(Booking $record): string => route('filament.admin.resources.bookings.edit', $record)),
-                Action::make('delete')
+                Action::make('刪除')
                     ->action(fn(Booking $record) => $record->delete()),
             ])
 

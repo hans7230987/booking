@@ -9,9 +9,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdminMiddleware
 {
+    protected array $allowedRoles = ['admin', 'venue_manager'];
+
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role === 'admin') {
+        if (Auth::check() && in_array(Auth::user()->role, $this->allowedRoles)) {
             return $next($request);
         }
 
