@@ -73,10 +73,10 @@ class BookingResource extends Resource
                 TextColumn::make('court.name')->label('球場'),
                 TextColumn::make('start_time')
                     ->label('開始時間')
-                    ->dateTime('m-d H:i'), // 只顯示到分鐘
+                    ->dateTime('m-d H:i'),
                 TextColumn::make('end_time')
                     ->label('結束時間')
-                    ->dateTime('m-d H:i'), // 只顯示到分鐘
+                    ->dateTime('m-d H:i'),
                 TextColumn::make('status')
                     ->label('狀態')
                     ->formatStateUsing(function ($state) {

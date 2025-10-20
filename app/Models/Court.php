@@ -11,12 +11,11 @@ class Court extends Model
 
     protected $fillable = [
         'name',
-        'venue_id',   // 關聯到 Venue
-        'type',       // 例如：羽球、籃球、桌球
+        'venue_id',   
+        'type',
         'capacity'
     ];
 
-    // 與球館關聯
     public function venue()
     {
         return $this->belongsTo(Venue::class);

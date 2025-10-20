@@ -73,7 +73,7 @@
 <script>
     flatpickr(".datetimepicker", {
         dateFormat: "Y-m-d",
-        maxDate: "today",      // 限制生日不可超過今天
+        maxDate: "today",
     });
 </script>
 @endpush

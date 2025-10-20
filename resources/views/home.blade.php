@@ -41,10 +41,6 @@
                 <img src="{{ asset('images/icons/member.png') }}" alt="我的資料">
                 <span>我的資料</span>
             </div></a>
-            <!-- <a href="#"><div class="feature yellow">
-                <img src="{{ asset('images/icons/ticket.png') }}" alt="票券信託查詢">
-                <span>票券信託查詢</span>
-            </div></a> -->
         </div>
         <div class="feature-row">
             <a href="{{ route('my.courses') }}"><div class="feature yellow">

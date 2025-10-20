@@ -28,7 +28,7 @@ class Booking extends Model
             if ($booking->court_id && !$booking->venue_id) {
                 $court = Court::find($booking->court_id);
                 if ($court) {
-                    $booking->venue_id = $court->venue_id; // 自動填入 venue_id
+                    $booking->venue_id = $court->venue_id; 
                 }
             }
         });

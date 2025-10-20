@@ -43,7 +43,6 @@ class VenueController extends Controller
 
     public function show(Venue $venue)
     {
-        // 這裡會顯示特定場館下的所有場地
         $venue->load('courts');
         return view('venues.show', compact('venue'));
     }

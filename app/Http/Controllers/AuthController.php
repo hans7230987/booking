@@ -50,7 +50,6 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // 依角色導向並顯示不同訊息
             $user = Auth::user();
             switch ($user->role) {
                 case 'admin':
